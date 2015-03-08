@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<title>index</title>
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="./js/jQueryColor.js"></script>
+	<!--这个插件是瀑布流主插件函数必须-->
+	<script type="text/javascript" src="./js/jquery.masonry.min.js"></script>
+	<!--这个插件只是为了扩展jquery的animate函数动态效果可有可无-->
+	<script type="text/javascript" src="./js/jQeasing.js"></script>
+	<script type="text/javascript" src="./js/pubu.js"></script>
+	<style>
+		.adWindow{
+			/* 关键属性 */
+			position:absolute;
+			top:0;
+			left:0;
+
+			width:100px;
+			height:100px;
+			border:1px solid #999;
+			background-color:#ddd;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<!-- 瀑布流样式开始 -->
+		<div class="waterfull clearfloat" id="waterfull">
+			<ul>
+				<li class="item">
+					<a href="####" class="a-img">
+						<!-- <img src="./images/defalt_news.jpg" alt=""> -->
+						<img src="http://b.hiphotos.baidu.com/image/pic/item/cb8065380cd7912366d6d67daf345982b2b78081.jpg" alt="">
+					</a>
+					<h2 class="li-title" title="手把手教你用css3来创建loading动画(二)">手把手教你用css3来创建loading动画(二)</h2>
+					<p class="description">HTML 5以前的标准由于考虑到浏览器安全问题并不允许直接跨域通信并不允许直接跨域通信并不允许直接跨域通信，于...</p>
+					<div class="qianm clearfloat">
+						<span class="sp1"><b>688</b>浏览</span>
+						<span class="sp2">志强不息</span>
+						<span class="sp3">2小时前&nbsp;By</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!-- loading按钮自己通过样式调整 -->
+		<div id="imloading" style="width:150px;height:30px;line-height:30px;font-size:16px;text-align:center;border-radius:3px;opacity:0.7;background:#000;margin:10px auto 30px;color:#fff;display:none">
+			I'm Loading.....
+		</div>
+	</div>
+	
+		<script type="text/javascript">
+
+		var timer = 90; // 数值越大，飘的越慢
+		var dx = 1;
+		var dy = 1;
+		
+		window.onload = function(){
+			// 找到id属性为adWindow的节点
+			var adWindow = document.getElementById('adWindow');
+			var body = document.body;
+			var height = body.offsetHeight;
+			var width = body.offsetWidth;
+			var winHeight = adWindow.offsetHeight;
+			var winWidth = adWindow.offsetWidth;
+
+			// 每timer毫秒执行一次移动
+			setInterval(function(){
+				
+				var top = adWindow.offsetTop + 3 * dy;
+				var left = adWindow.offsetLeft + 3 * dx;
+
+				if(dy == 1 && top >= height - winHeight){
+					dy = -1;
+				}else if(dy == -1 && top <= 0){
+					dy = 1;
+				}
+				
+				if(dx == 1 && left >= width - winWidth){
+					dx = -1;
+				}else if(dx == -1 && left <= 0){
+					dx = 1;
+				}
+
+				adWindow.style.top = top + 'px';
+				adWindow.style.left = left + 'px';
+			}, timer)
+		
+		}
+	</script>
+	<div id="adWindow" class="adWindow">
+		<a href="index0.html"><img alt="" src="images/window.jpg"></a>
+	</div>
+</body>
+</html>
